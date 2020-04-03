@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_tool_list">
+      <field name="name">tool list</field>
+      <field name="model">cam.tool</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nro_serie"/>
+          <field name="model_id"/>
+          <field name="engine_id"/>
+          <field name="state"/>
+          <field name="brand_id"/>
+          <field name="model_id"/>
+        </tree>
+      </field>
+    </record>
+
+
+	<record id="cam_tool_form" model="ir.ui.view">
+		<field name="name">cam.tool.form</field>
+		<field name="model">cam.tool</field>
+		<field name="arch" type="xml">
+			<form string="Herramienta">
+				<header>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<h1>
+						<field name="nro_serie" />
+					</h1>
+
+					<field name="out_of_service_reason_ids"  attrs="{'invisible':[('state','==','working')]}">
+							<tree editable="top" create="1" colors="gray:endtime!=False" limit="1">
+								<field name="starttime"/>
+								<field name="endtime"/>
+								<field name="short_description"/>
+								<field name="long_description"/>
+								<field name="reason"/>
+								<field name="image_512" widget='image' class="oe_avatar"/>
+								
+							</tree>
+						
+						</field>
+					<group>
+						<group>
+							<field name="model_id"/>
+							<field name="brand_id"/>
+							<field name="engine_id"/>
+						</group>
+					</group>
+				</sheet>			
+			</form>
+		</field>
+	</record>
+
+
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_tool_action_window">
+      <field name="name">tool window</field>
+      <field name="res_model">cam.tool</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

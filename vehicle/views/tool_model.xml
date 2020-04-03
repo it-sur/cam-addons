@@ -1,0 +1,41 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_tool_model_list">
+      <field name="name">cam.tool_model.list</field>
+      <field name="model">cam.tool_model</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name"/>
+		  <field name="description"/>							
+		  <field name="brand_id"/>							
+        
+        </tree>
+      </field>
+    </record>
+
+
+		<record id="cam_tool_model_form" model="ir.ui.view">
+			<field name="name">cam.tool_model.form</field>
+			<field name="model">cam.tool_model</field>
+			<field name="arch" type="xml">
+				<form string="tool_model">
+					<group>
+				          <field name="name"/>
+						  <field name="description"/>							
+						  <field name="brand_id"/>								
+					</group>
+				</form>
+			</field>
+		</record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_tool_model_action_window">
+      <field name="name">cam.tool_model_action_window</field>
+      <field name="res_model">cam.tool_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

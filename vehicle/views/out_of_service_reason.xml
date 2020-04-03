@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_out_of_service_reason_list">
+      <field name="name">out_of_service_reason list</field>
+      <field name="model">cam.out_of_service_reason</field>
+      <field name="arch" type="xml">
+							<tree editable="top" create="1" colors="gray:endtime!=False" limit="1">
+								<field name="starttime"/>
+								<field name="endtime"/>
+								<field name="short_description"/>
+								<field name="long_description"/>
+								<field name="reason"/>
+								<field name="image_512" widget='image' class="oe_avatar"/>
+							</tree>
+						
+		</field>
+	</record>
+
+
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_out_of_service_reason_action_window">
+      <field name="name">tool window</field>
+      <field name="res_model">cam.tool</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

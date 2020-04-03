@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+        <!--PORTA CONTENEDORES-->
+
+        <record id="function" model="cam.function">
+            <field name="name">Porta Simple</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">Porta Doble</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">Porta Chupa</field>
+        </record>
+        
+        <!--CARGAS LIQUIDAS-->
+        <record id="function" model="cam.function">
+            <field name="name">CISTERNA DE  25 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CISTERNA DE  35 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">ACOPLADO DE 10 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">ACOPLADO DE 15 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">ACOPLADO DE 25 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">TRACTOR SIMPLE</field>
+        </record>
+
+        <!--CARGAS SOLIDAS-->
+        <record id="function" model="cam.function">
+            <field name="name">SEMIPLAYO</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">TRACTOR C/HIDRO</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">HIDRO C/CAJA</field>
+        </record>
+
+        <!--PRODUCCION-->
+        <record id="function" model="cam.function">
+            <field name="name">CONTROL DE POZO DE 9 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CONTROL DE POZO DE 25 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">MOTOBOMBA</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">HOT OIL</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CISTERNA DE 25 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CISTERNA DE 30 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">TRACTOR DOBLE</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">TRACTOR SIMPLE</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CHUPA DE 9 MTS</field>
+        </record>
+
+        <!--PRODUCCION-->
+        <record id="function" model="cam.function">
+            <field name="name">VACTOR</field>
+        </record>
+
+        <!--CHUPAS-->
+        <record id="function" model="cam.function">
+            <field name="name">EQUIPO DE VACIO DE 9 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">EQUIPO DE VACIO DE 9 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">EQUIPO DE VACIO DE 25 MTS</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">EQUIPO DE VACIO DE 30 MTS</field>
+        </record>
+        <!--CAMIONETAS-->
+        <record id="function" model="cam.function">
+            <field name="name">CAMBIOS DE TURNO</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">SUPERVISION</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">MANTENIMIENTO</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">SEGURIDAD</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">CERTIFICACION</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">LOGISITICA</field>
+        </record>
+        <record id="function" model="cam.function">
+            <field name="name">TRASLADO DE ALIMENTOS</field>
+        </record>
+        
+        <!--SPRINTER-->
+        <record id="function" model="cam.function">
+            <field name="name">CAMBIOS DE TURNO</field>
+        </record>
+
+    </data>
+</odoo>

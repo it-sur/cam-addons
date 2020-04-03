@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+        <record id="sector_pc" model="cam.sector">
+            <field name="name">Porta Contenedores</field>
+        </record>
+        <record id="sector_pr" model="cam.sector">
+            <field name="name">Producción</field>
+        </record>
+        <record id="sector_cs" model="cam.sector">
+            <field name="name">Cargas Sólidas</field>
+        </record>
+        <record id="sector_cl" model="cam.sector">
+            <field name="name">Cargas Líquidas</field>
+        </record>
+        <record id="sector_vc" model="cam.sector">
+            <field name="name">Vactor</field>
+        </record>
+        <record id="sector_ch" model="cam.sector">
+            <field name="name">Chupas</field>
+        </record>
+        <record id="sector_44" model="cam.sector">
+            <field name="name">Pick up 4x4</field>
+        </record>
+        <record id="sector_sp" model="cam.sector">
+            <field name="name">Sprinter</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<odoo>
+	<data>
+		<!-- explicit list view definition -->
+		<record model="ir.ui.view" id="cam_operation_base_list">
+			<field name="name">operation_base list</field>
+			<field name="model">cam.operation_base</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record id="cam_operation_base_form" model="ir.ui.view">
+			<field name="name">cam.operation_base.form</field>
+			<field name="model">cam.operation_base</field>
+			<field name="arch" type="xml">
+				<form string="Estado Financiero">
+					<group>
+						<h1>
+							<field name="name" />
+						</h1>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="cam_operation_base_action_window">
+			<field name="name">operation_base window</field>
+			<field name="res_model">cam.operation_base</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- server action to the one above -->
+		<!-- <record model="ir.actions.server" id="vehicle.action_server"> <field 
+			name="name">vehicle server</field> <field name="model_id" ref="model_vehicle_vehicle"/> 
+			<field name="state">code</field> <field name="code"> action = { "type": "ir.actions.act_window", 
+			"view_mode": "tree,form", "res_model": model._name, } </field> </record> -->
+
+
+	</data>
+</odoo>

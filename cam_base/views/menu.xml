@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+
+	<menuitem name="Administrativo" id="cam_management_menu_root" groups="group_name_menu_cam" action="cam_function_action_window"
+		            web_icon="delsol_base,static/description/icon.png"/>
+
+    <!-- Menus -->
+    
+	<menuitem id="cam_function_menu" name="Funcion" parent="cam_management_menu_root" action="cam_function_action_window"/>    	
+	<menuitem id="cam_sector_menu" name="Sector" parent="cam_management_menu_root" action="cam_sector_action_window"/>    	
+	<menuitem id="cam_operation_base_menu" name="Base de operaciones" parent="cam_management_menu_root" action="cam_operation_base_action_window"/>    	
+		
+		
+  </data>
+</odoo>

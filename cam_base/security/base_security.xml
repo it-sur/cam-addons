@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+    	
+    	<record model="ir.module.category" id="module_cam_actions_category">
+            <field name="name">CAM SRL Acciones</field>
+            <field name="description">Módulo base de concesionario</field>
+            <field name="sequence">16</field>
+        </record>
+    	<record model="ir.module.category" id="module_cam_menu_category">
+            <field name="name">CAM SRL Menu</field>
+            <field name="description">Módulo base de concesionario</field>
+            <field name="sequence">16</field>
+        </record>
+    	<record model="ir.module.category" id="module_cam_profiles_category">
+            <field name="name">CAM SRL Perfiles</field>
+            <field name="description">Módulo base</field>
+            <field name="sequence">16</field>
+        </record>
+    	
+	</data>
+</odoo>

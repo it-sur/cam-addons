@@ -1,0 +1,113 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_vehicle_list">
+      <field name="name">vehicle list</field>
+      <field name="model">cam.vehicle</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nro_interno"/>
+          <field name="patent"/>
+          <field name="sector_id"/>
+          <field name="function_id"/>
+          <field name="model_id"/>
+          <field name="engine_id"/>
+          <field name="state"/>
+          <field name="nro_chasis"/>
+        </tree>
+      </field>
+    </record>
+
+
+	<record id="cam_vehicle_form" model="ir.ui.view">
+		<field name="name">cam.vehicle.form</field>
+		<field name="model">cam.vehicle</field>
+		<field name="arch" type="xml">
+			<form string="Vehiculo">
+				<field name="id" invisible="1" />
+			<header>
+						<field name="state" widget="statusbar" clickable="1" attrs="{'invisble':[('id','=',False)]}"/>			
+			</header>
+			<sheet>
+					
+					<h1>
+						<field name="nro_interno" nolabel="1"/>
+					</h1>
+					<group>
+							<field name="out_of_service_reason_ids" attrs="{'invisible':[('state','in',['working','sold'])]}" context="{'default_vehicle_id':id}">
+								<tree editable="top" create="1" colors="gray:endtime!=False">
+									<field name="starttime"/>
+									<field name="endtime"/>
+									<field name="short_description"/>
+									<field name="long_description"/>
+									<field name="reason"/>
+									<field name="image_1920" string="Foto" widget="image" options="{'preview_image': 'image_128'}"/>
+								</tree>
+							</field>
+					</group>
+					<group col="2">
+						<group>
+							<field name="model_id"/>
+							<field name="brand_id"/>
+							<field name="nro_chasis"/>
+							<field name="engine_id"/>
+							<field name="patent"/>
+							<field name="sector_id"/>
+							<field name="function_id"/>
+						</group>
+						<group>
+							<field name="image_1920" widget="image" nolabel="1" class="oe_right" options="{'preview_image': 'image_256'}"/> <!-- class="oe_avatar"  -->
+						</group>
+					</group>
+				
+
+				<!-- 
+				<notebook>
+						<page string="Fotos" attrs="{'invisible':[('photos_ids','=',False)]}">
+							<field name="photos_ids">
+							
+								<kanban quick_create="true" create="true" delete="true">
+									<field name="name" />
+									<templates>
+										<t t-name="kanban-box">
+											<div class="oe_kanban_global_click o_kanban_attachment_image"
+												style="position: relative">
+												<a t-if="! read_only_mode" type="delete"
+													style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+												<div class="oe_module_vignette ">
+													<img
+														t-att-src="kanban_image('ir.attachment', 'datas', record.id)"
+														class="oe_avatar" style="width:70%" widget="image" class="oe_avatar"/>
+													<div class="oe_module_desc">
+														<field name="name" />
+													</div>
+												</div>
+											</div>
+										</t>
+									</templates>
+								</kanban>							
+								
+							
+							
+							</field>
+						</page>
+				</notebook>
+				 -->
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_vehicle_action_window">
+      <field name="name">vehicle window</field>
+      <field name="res_model">cam.vehicle</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+
+	<menuitem name="Vehiculos/Herramientas" id="cam_vehi_tool_menu_root" groups="cam_base.group_name_menu_cam" action="cam_vehicle_action_window"
+		            web_icon="cam_base,static/description/icon.png"/>
+
+    <!-- Menus -->
+    
+	<menuitem id="cam_vehicle_menu" name="Vehiculos" parent="cam_vehi_tool_menu_root" action="cam_vehicle_action_window"/>    	
+	<menuitem id="vehicle_model_menu" name="Modelos de vehiculos" parent="cam_vehi_tool_menu_root" action="cam_vehicle_model_action_window"/>    	
+	<menuitem id="cam_tool_menu" name="Herramientas" parent="cam_vehi_tool_menu_root" action="cam_tool_action_window"/>    	
+	<menuitem id="tool_model_menu" name="Modelos de herramientas" parent="cam_vehi_tool_menu_root" action="cam_tool_model_action_window"/>    	
+	<menuitem id="brand_menu" name="Marcas" parent="cam_vehi_tool_menu_root" action="cam_brand_action_window"/>    	
+	<menuitem id="engine_menu" name="Motores" parent="cam_vehi_tool_menu_root" action="cam_engine_action_window"/>    	
+		
+		
+  </data>
+</odoo>

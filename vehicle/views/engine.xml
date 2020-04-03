@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_engine_list">
+      <field name="name">cam.engine.list</field>
+      <field name="model">cam.engine</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name"/>
+		  <field name="description"/>							
+        </tree>
+      </field>
+    </record>
+
+
+		<record id="cam_engine_form" model="ir.ui.view">
+			<field name="name">cam.engine.form</field>
+			<field name="model">cam.engine</field>
+			<field name="arch" type="xml">
+				<form string="engine">
+					<sheet>
+					<group>
+				          <field name="name"/>
+						  <field name="description"/>		
+					</group>
+					<group>						  
+						<group>
+						  <field name="transmission"/>		
+						  <field name="consumption"/>		
+						  <field name="consumption_measure"/>		
+						  <field name="odometer"/>		
+						  <field name="odometer_unit"/>		
+						</group>
+					</group>
+					<group>						  
+						<group>
+						  <field name="fuel_type"/>		
+						</group>
+						<group>
+						  <field name="cilinder" attrs="{'invisible':[('fuel_type','in',['e_220v'])]}"/>		
+						  <field name="horsepower" attrs="{'invisible':[('fuel_type','in',['e_220v'])]}"/>		
+						  <field name="co2" attrs="{'invisible':[('fuel_type','in',['e_220v'])]}"/>		
+						</group>
+						<group>
+						  <field name="powerkw" attrs="{'invisible':[('fuel_type','in',['bio-diesel','diesel','nafta','gas'])]}"/>		
+						</group>
+					</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_engine_action_window">
+      <field name="name">cam.engine_action_window</field>
+      <field name="res_model">cam.engine</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

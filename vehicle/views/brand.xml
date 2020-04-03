@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="cam_brand_list">
+      <field name="name">cam.brand.list</field>
+      <field name="model">cam.brand</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+          <field name="name"/>
+		  <field name="brand_type"/>							
+        </tree>
+      </field>
+    </record>
+
+
+		<record id="cam_brand_form" model="ir.ui.view">
+			<field name="name">cam.brand.form</field>
+			<field name="model">cam.brand</field>
+			<field name="arch" type="xml">
+				<form string="brand">
+					<group>
+				          <field name="name"/>
+						  <field name="brand_type"/>								
+					</group>
+				</form>
+			</field>
+		</record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_brand_action_window">
+      <field name="name">cam.brand_action_window</field>
+      <field name="res_model">cam.brand</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>
