@@ -17,6 +17,8 @@ class maintainable_object(models.Model):
                                ("sold", "Vendido"),
                                ]
 
+    nro_serie = fields.Char("Nro Serie", track_visibility='onchange')
+
     create_date = fields.Datetime("Fecha de carga", readonly=True)
     
     acquisition_date = fields.Date("Fecha de compra")
@@ -29,4 +31,6 @@ class maintainable_object(models.Model):
 
 
 
-    
+    _sql_constraints = [
+            ('vehicle_nro_serie', 'unique(nro_serie)', 'El nro de interno/serie ya existe')
+    ]

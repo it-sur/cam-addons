@@ -28,7 +28,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_brand_action_window">
-      <field name="name">cam.brand_action_window</field>
+      <field name="name">Marcas</field>
       <field name="res_model">cam.brand</field>
       <field name="view_mode">tree,form</field>
     </record>

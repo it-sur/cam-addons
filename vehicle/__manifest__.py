@@ -25,7 +25,6 @@
     'data': [
         'security/profiles_security.xml',
         'security/ir.model.access.csv',
-        'views/brand.xml',
         'views/engine.xml',
         'views/tool_model.xml',
         'views/tool.xml',

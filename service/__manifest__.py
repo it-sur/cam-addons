@@ -19,13 +19,21 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','hr','percent_field'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/profiles_security.xml',
+        'security/ir.model.access.csv',
+        'views/mechanic.xml',
+        'views/workshop.xml',
+        'views/task.xml',
+        'views/item_task_wizard.xml',
+        'views/item_task.xml',
+        'views/predefined_service.xml',
+        'views/service.xml',
+        'views/vehicle.xml',
+        'views/menu.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -9,9 +9,10 @@ class engine(models.Model):
 
     name = fields.Char("Nombre")
     description = fields.Char("Descripcion")
-    transmission = fields.Char("Transmision")
 
 
+    owner_vehicle_id = fields.Many2one("cam.vehicle",string="En vehiculo")
+    
     consumption = fields.Integer("Consumo estandard")
     consumption_measure = fields.Selection([("kml", "KM/L"),
                                                  ("mil","Mi/L"),

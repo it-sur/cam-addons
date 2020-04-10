@@ -1,60 +1,118 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="vehicle.list">
-      <field name="name">vehicle list</field>
-      <field name="model">vehicle.vehicle</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+	<data>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="vehicle.action_window">
-      <field name="name">vehicle window</field>
-      <field name="res_model">vehicle.vehicle</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+		<record model="ir.ui.view" id="cam_item_task_tree">
+			<field name="name">item task tree</field>
+			<field name="model">cam.item_task</field>
+			<field name="arch" type="xml">
+		
+				<tree decoration-danger="over_under_work &gt; 0">
+									<field name="type" invisible="1"/>
+									<field name="mechanic_id"/>
+									<field name="task_id"/>
+									<field name="estimated_time"/>
+									<field name="elapsed_time"/>
+									<field name="state" readonly="1"/>
+									<field name="result" readonly="1"/>
+									<field name="result_description" readonly="1"/>
+									<field name="progress_percentage" readonly="1" widget="progressbar"/>
+									<field name="over_under_work" readonly="1"/>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="vehicle.action_server">
-      <field name="name">vehicle server</field>
-      <field name="model_id" ref="model_vehicle_vehicle"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+									<button name="stop" string="Pausar" type="object" class="oe_highlight oe_read_only"
+										 attrs="{'invisible':[('state','!=','in_progress')]}"/>
+									<button name="continue_task" string="Continuar" type="object" class="oe_highlight oe_read_only"
+										 attrs="{'invisible':[('state','!=','paused')]}"/>
+									<button name="start" string="Comenzar" type="object" class="oe_highlight oe_read_only"
+										 attrs="{'invisible':[('state','!=','assigned')]}"/>
+									<button name="%(finalize_item_task_action)d" string="Finalizar" type="action"
+										attrs="{'invisible':[('state','!=','in_progress')]}" class="oe_highlight  oe_read_only"/>
+								</tree>
+				</field>
+		</record>
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="vehicle" id="vehicle.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="vehicle.menu_1" parent="vehicle.menu_root"/>
-    <menuitem name="Menu 2" id="vehicle.menu_2" parent="vehicle.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="vehicle.menu_1_list" parent="vehicle.menu_1"
-              action="vehicle.action_window"/>
-    <menuitem name="Server to list" id="vehicle" parent="vehicle.menu_2"
-              action="vehicle.action_server"/>
--->
-  </data>
+		<record model="ir.ui.view" id="cam_item_task_reduced_form">
+			<field name="name">item task form</field>
+			<field name="model">cam.item_task</field>
+			<field name="arch" type="xml">
+				<form string="Tarea">
+					<field name="id" invisible="1" />
+
+					<sheet>
+						<group>
+								<field name="task_id" />
+								
+								<field name="mechanic_id" />
+								<div style="color:yellow;background-color:black" attrs="{'invisible':[('mechanic_id','!=',False)]}" col="2">
+									Debe elegir un mecánico para asignar la tarea y comenzar a trabajar en ella
+								</div>
+								
+								<field name="service_id" invisible="1" />
+								<field name="state" invisible="1"/>
+								<field name="type" invisible="1"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cam_item_task_form">
+			<field name="name">item task form</field>
+			<field name="model">cam.item_task</field>
+			<field name="arch" type="xml">
+				<form string="Tarea">
+					<field name="id" invisible="1" />
+					<header>
+						<field name="state" widget="statusbar" />
+						<button name="stop" string="Pausar" type="object" class="oe_highlight oe_read_only"
+							 attrs="{'invisible':[('state','!=','in_progress')]}"/>
+						<button name="continue_task" string="Continuar" type="object" class="oe_highlight oe_read_only"
+							 attrs="{'invisible':[('state','!=','paused')]}"/>
+						<button name="start" string="Comenzar" type="object" class="oe_highlight oe_read_only"
+							 attrs="{'invisible':[('state','!=','assigned')]}"/>
+
+						<button name="%(finalize_item_task_action)d" string="Finalizar" type="action"
+							attrs="{'invisible':[('state','!=','in_progress')]}" class="oe_highlight"/>
+
+					</header>
+
+					<sheet>
+						<group>
+							<group string="Servicio">
+								<field name="service_id" />
+								<field name="task_id" />
+								
+								<field name="mechanic_id" />
+								<field name="workshop_id" />
+								<span style="color:yellow;text-color:black" attrs="{'invisible':[('mechanic_id','!=',False)]}">
+									Debe elegir un mecánico para asignar la tarea y comenzar a trabajar en ella
+								</span>
+								
+								<field name="type" />
+
+							</group>
+							<group string="Avance">
+								<field name="result" attrs="{'required':[('state','=','finalized')]}"/>
+								<field name="result_description"  attrs="{'required':[('state','=','finalized')]}"/>
+								<field name="progress_percentage" />
+								<field name="estimated_time" />
+								<field name="elapsed_time" />
+							</group>
+						</group>
+
+						<group string="Registros de trabajo">
+							<field name="elapsed_time_ids" nolabel="1">
+								<tree>
+									<field name="start_time" />
+									<field name="end_time" />
+									<field name="elapsed_time" />
+								</tree>
+								
+							</field>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
 </odoo>

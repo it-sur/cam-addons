@@ -10,8 +10,14 @@ class vehicle(models.Model):
 
     name = fields.Char("Nombre")
 
+    operation_base_id = fields.Many2one("cam.operation_base","Base de operaciones")
 
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    def display_name(self):
+        for rec in self:
+            name = rec.name if rec.name else "" 
+            operation_base = " - " + rec.operation_base_id.display_name if rec.operation_base_id.display_name else ""
+            
+            rec.display_name = name + operation_base
+
+
+    display_name = fields.Char(compute=display_name)

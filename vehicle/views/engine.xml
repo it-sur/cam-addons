@@ -5,9 +5,11 @@
       <field name="name">cam.engine.list</field>
       <field name="model">cam.engine</field>
       <field name="arch" type="xml">
-        <tree editable="bottom">
+        <tree >
           <field name="name"/>
-		  <field name="description"/>							
+		  <field name="description"/>		
+		  <field name="owner_vehicle_id"/>		
+		  <field name="fuel_type"/>		
         </tree>
       </field>
     </record>
@@ -25,11 +27,15 @@
 					</group>
 					<group>						  
 						<group>
-						  <field name="transmission"/>		
 						  <field name="consumption"/>		
 						  <field name="consumption_measure"/>		
 						  <field name="odometer"/>		
 						  <field name="odometer_unit"/>		
+						</group>
+						<group>
+						<group string="Vehiculo">
+							<field name="owner_vehicle_id"/>
+						</group>
 						</group>
 					</group>
 					<group>						  
@@ -52,7 +58,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_engine_action_window">
-      <field name="name">cam.engine_action_window</field>
+      <field name="name">Motores</field>
       <field name="res_model">cam.engine</field>
       <field name="view_mode">tree,form</field>
     </record>

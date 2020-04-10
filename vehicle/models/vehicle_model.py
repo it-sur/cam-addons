@@ -18,8 +18,8 @@ class model(models.Model):
 
     seats = fields.Integer("Asientos")
     doors = fields.Integer("Puertas")
-    color = fields.Char("Puertas")
-    model_year = fields.Integer("Anio del modelo")
+    color = fields.Char("Color")
+    model_year = fields.Integer("Año del modelo")
 
 
     _sql_constraints = [

@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="predefined_service_list">
+      <field name="name">predefined_service list</field>
+      <field name="model">cam.predefined_service</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="task_planned_ids" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+    
+     <record model="ir.ui.view" id="cam_predefined_service_form">
+      <field name="name">predefined_service form</field>
+      <field name="model">cam.predefined_service</field>
+      <field name="arch" type="xml">
+    	<form string="Servicio predefinido">
+    	<sheet>
+			<group>
+				<field name="id" invisible="1" />
+				<field name="name" />
+				<field name="task_planned_ids" widget="many2many_tags"/>
+			</group>
+    	</sheet>
+		</form>
+	  </field>
+	</record>
+    
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_predefined_service_action_window">
+      <field name="name">Servicios Predefinidos</field>
+      <field name="res_model">cam.predefined_service</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

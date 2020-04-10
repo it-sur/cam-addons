@@ -1,0 +1,36 @@
+<odoo>
+
+    <data noupdate="1">
+        
+        <!--SPRINTER-->
+        <record id="BRIGESTONE" model="cam.brand">
+            <field name="name">BRIGESTONE</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="FATE" model="cam.brand">
+            <field name="name">FATE</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="FIRESTONE" model="cam.brand">
+            <field name="name">FIRESTONE</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="GOODYEAR" model="cam.brand">
+            <field name="name">GOODYEAR</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="MICHELIN" model="cam.brand">
+            <field name="name">MICHELIN</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="PIRELLI" model="cam.brand">
+            <field name="name">PIRELLI</field>
+            <field name="type">tire</field>
+        </record>
+        <record id="SCANIA" model="cam.brand">
+            <field name="name">SCANIA</field>
+            <field name="type">tire</field>
+        </record>
+
+    </data>
+</odoo>

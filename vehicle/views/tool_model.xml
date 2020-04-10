@@ -31,7 +31,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_tool_model_action_window">
-      <field name="name">cam.tool_model_action_window</field>
+      <field name="name">herramientas</field>
       <field name="res_model">cam.tool_model</field>
       <field name="view_mode">tree,form</field>
     </record>

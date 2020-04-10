@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+		<record model="ir.ui.view" id="item_task_wizard">
+            <field name="name">item_task_finalize.wizard.form</field>
+            <field name="model">cam.item_task_wizard_finalize</field>
+            <field name="arch" type="xml">
+                <form string="Obtener Constacia">
+                    <group>
+						<field name="result"/>
+						<field name="result_description"/>
+                    </group>
+                    <footer>
+						<button name="end" type="object" 
+								string="Confirmar" class="oe_highlight"/>
+                        <button special="cancel" string="Cancelar"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="finalize_item_task_action"
+                    name="Finalizar Tarea"
+                    binding_model="cam.item_task"
+                    res_model="cam.item_task_wizard_finalize"
+                    view_mode="form"
+                    target="new"/>
+                    
+                    
+<!-- 		<record id="finalize_item_task_action" model="ir.actions.act_window"> -->
+<!-- 			<field name="name">Finalizar Tarea</field> -->
+<!-- 			<field name="res_model">cam.item_task_wizard_finalize</field> -->
+<!--             <field name="view_ids" eval="[(5, 0, 0), -->
+<!--                           (0, 0, {'view_mode': 'form', 'view_id': ref('item_task_wizard')})]"/> -->
+<!-- 			<field name="view_mode">form</field> -->
+<!-- 			<field name="target">new</field> -->
+<!-- 		</record> -->
+  </data>
+</odoo>

@@ -9,4 +9,5 @@ class operation_base(models.Model):
 
 
     name = fields.Char("Nombre")
+    code = fields.Char("Codigo")
 

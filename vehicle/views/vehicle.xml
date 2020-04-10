@@ -6,7 +6,7 @@
       <field name="model">cam.vehicle</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nro_interno"/>
+          <field name="nro_serie"/>
           <field name="patent"/>
           <field name="sector_id"/>
           <field name="function_id"/>
@@ -26,12 +26,12 @@
 			<form string="Vehiculo">
 				<field name="id" invisible="1" />
 			<header>
-						<field name="state" widget="statusbar" clickable="1" attrs="{'invisble':[('id','=',False)]}"/>			
+						<field name="state" widget="statusbar" clickable="1" attrs="{'invisible':[('id','=',False)]}"/>			
 			</header>
 			<sheet>
 					
 					<h1>
-						<field name="nro_interno" nolabel="1"/>
+						<field name="nro_serie" nolabel="1"/>
 					</h1>
 					<group>
 							<field name="out_of_service_reason_ids" attrs="{'invisible':[('state','in',['working','sold'])]}" context="{'default_vehicle_id':id}">
@@ -51,6 +51,7 @@
 							<field name="brand_id"/>
 							<field name="nro_chasis"/>
 							<field name="engine_id"/>
+							<field name="transmission"/>
 							<field name="patent"/>
 							<field name="sector_id"/>
 							<field name="function_id"/>
@@ -59,40 +60,8 @@
 							<field name="image_1920" widget="image" nolabel="1" class="oe_right" options="{'preview_image': 'image_256'}"/> <!-- class="oe_avatar"  -->
 						</group>
 					</group>
-				
-
-				<!-- 
-				<notebook>
-						<page string="Fotos" attrs="{'invisible':[('photos_ids','=',False)]}">
-							<field name="photos_ids">
-							
-								<kanban quick_create="true" create="true" delete="true">
-									<field name="name" />
-									<templates>
-										<t t-name="kanban-box">
-											<div class="oe_kanban_global_click o_kanban_attachment_image"
-												style="position: relative">
-												<a t-if="! read_only_mode" type="delete"
-													style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
-												<div class="oe_module_vignette ">
-													<img
-														t-att-src="kanban_image('ir.attachment', 'datas', record.id)"
-														class="oe_avatar" style="width:70%" widget="image" class="oe_avatar"/>
-													<div class="oe_module_desc">
-														<field name="name" />
-													</div>
-												</div>
-											</div>
-										</t>
-									</templates>
-								</kanban>							
-								
-							
-							
-							</field>
-						</page>
+				<notebook >
 				</notebook>
-				 -->
 				</sheet>
 			</form>
 		</field>
@@ -103,7 +72,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_vehicle_action_window">
-      <field name="name">vehicle window</field>
+      <field name="name">Vehiculos</field>
       <field name="res_model">cam.vehicle</field>
       <field name="view_mode">tree,form</field>
     </record>

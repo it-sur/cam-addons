@@ -22,7 +22,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_out_of_service_reason_action_window">
-      <field name="name">tool window</field>
+      <field name="name">Razones de fuera de servicio</field>
       <field name="res_model">cam.tool</field>
       <field name="view_mode">tree,form</field>
     </record>

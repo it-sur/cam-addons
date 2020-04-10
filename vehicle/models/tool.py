@@ -10,10 +10,24 @@ class tool(models.Model):
     
     _inherit = ["cam.maintainable_object"]
 
-    nro_serie = fields.Char("Nro Serie", track_visibility='onchange')
 
-    engine_id = fields.Many2one("cam.engine",string="Motor")
+    def display_name(self):
+        for rec in self:
+            serie = rec.nro_serie if rec.nro_serie else "" 
+            marca = ""
+            if rec.brand_id:
+                marca = " - "+ rec.brand_id.display_name  if rec.brand_id.display_name else ""
+            estado = ""
+            if rec.state:
+            
+                estado = "(" + [item for item in rec._get_states() if item[0] == rec.state][0][1] + ")"
+            
+            rec.display_name = serie + marca + estado
 
+
+    display_name = fields.Char(compute=display_name)
+
+    owner_vehicle_id = fields.Many2one("cam.vehicle",string="Vehiculo")
 
     brand_id = fields.Many2one(related="model_id.brand_id", string="Marca", track_visibility='onchange')
     model_id = fields.Many2one("cam.tool_model", string="Modelo", track_visibility='onchange')

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="cam_vehicle_service_form" model="ir.ui.view">
+            <field name="name">cam.vehicle_service form</field>
+            <field name="model">cam.vehicle</field>
+            <field name="inherit_id" ref="vehicle.cam_vehicle_form"/>
+            <field name="arch" type="xml">
+            
+                <notebook position="before">
+           			<group>
+							<field name="related_tool_id"/>
+					</group>
+				</notebook>
+                <xpath expr="//notebook[last()]" position="inside">
+						<page string="Servicios">
+<!-- 							<field name="service_ids" mode="kanban"> -->
+							<field name="service_ids">
+									<tree>
+										<field name="name"/>
+										<field name="datetime_programmed"/>
+										<field name="start_time"/>
+										<field name="end_time"/>
+										<field name="state"/>
+										<field name="service_type_subtype"/>
+									</tree>
+							
+				<!-- 
+									<kanban>
+										<field name="name"/>
+										<field name="datetime_programmed"/>
+										<field name="start_time"/>
+										<field name="end_time"/>
+										<field name="state"/>
+										<field name="service_type_subtype"/>
+					                    <progressbar field="state" colors='{"finished": "success", "finished_but": "warning"}' sum_field="planned_revenue" help="This bar allows to filter the opportunities based on scheduled activities."/>
+										
+										<templates>
+											<t t-name="kanban-box">
+												<div t-attf-class="#{kanban_color(record.state.raw_value)}" style="height:150px;border:blue;">
+
+													<div class="o_dropdown_kanban dropdown" groups="base.group_user">
+														<a class="dropdown-toggle btn" data-toggle="dropdown"
+															href="#">
+															<span class="fa fa-bars fa-lg" />
+														</a>
+														<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+															<t t-if="widget.editable">
+																<li>
+																	<a type="edit">Edit</a>
+																</li>
+															</t>
+															<t t-if="widget.deletable">
+																<li>
+																	<a type="delete">Delete</a>
+																</li>
+															</t>
+														</ul>
+													</div>
+													<div class="oe_kanban_top_left">
+														<field name="name" />
+													</div>
+													<div class="oe_kanban_top_right">
+														<field name="datetime_programmed" />
+													</div>
+													<div class="oe_kanban_bottom_left">
+														<field name="start_time" />
+														<field name="end_time" />
+													</div>
+													<div class="oe_kanban_bottom_right">
+														<field name="service_type_subtype" />
+													</div>
+												</div>
+											</t>
+										</templates>
+									</kanban>
+				 -->							
+								</field>
+							
+						</page>                    
+
+                </xpath>
+            </field>
+        </record>
+</odoo>

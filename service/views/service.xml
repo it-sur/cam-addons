@@ -1,60 +1,157 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="vehicle.list">
-      <field name="name">vehicle list</field>
-      <field name="model">vehicle.vehicle</field>
+
+    <record model="ir.ui.view" id="cam_service_list">
+      <field name="name">service list</field>
+      <field name="model">cam.service</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="vehicle_id"/>
+          <field name="datetime_programmed"/>
+          <field name="start_time"/>
+          <field name="end_time"/>
+          <field name="state"/>
+          <field name="workshop_id"/>
+          <field name="service_type_subtype"/>
+          <field name="diagnostics"/>
         </tree>
       </field>
     </record>
--->
+    
+    
+                
+	<record model='ir.ui.view' id='cam_service_calendar'>
+		<field name="name">cam.service calendar</field>
+		<field name="model">cam.service</field>
+		<field name="arch" type="xml">
+			<calendar string="Calendario" date_start="datetime_programmed" date_delay="programmed_time" quick_add="False">
+				<field name="vehicle_nro_serie"/>
+				<field name="service_type_subtype"/>
+				<field name="predefined_service_id"/>
+			</calendar>
+		</field>
+	</record>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="vehicle.action_window">
-      <field name="name">vehicle window</field>
-      <field name="res_model">vehicle.vehicle</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="vehicle.action_server">
-      <field name="name">vehicle server</field>
-      <field name="model_id" ref="model_vehicle_vehicle"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <act_window id="cam_new_service_action_window"
+            name="Programar nuevo servicio"
+            res_model="cam.service"
+            view_mode="form"/>
+    
+    
+    <record model="ir.ui.view" id="cam_service_form">
+      <field name="name">service form</field>
+      <field name="model">cam.service</field>
+      <field name="arch" type="xml">
+			<form string="Servicio">
+				<field name="id" invisible="1" />
+				<field name="vehicle_id" invisible="1"/>
+				<field name="workshop_id" invisible="1"/>
+				
+			<header>
+				<field name="state" widget="statusbar" clickable="1" attrs="{'invisible':[('id','=',False)]}"/>		
+				<button name="open_service" string="Abrir Servicio" 
+						type="object" class="oe_highlight oe_read_only" attrs="{'invisible':['|',('id','=',False),('state','in',('draft','in_progress'))]}"/>
+				<button name="close_service" string="Cerrar Servicio" 
+						type="object" class="oe_highlight oe_read_only" attrs="{'invisible':['|',('id','=',False),('state','in',('finished','finished_but'))]}"/>
+							
+			</header>
+			<sheet>
+					<h1>
+                    <div class="oe_button_box" name="button_box">
+	<!--                         <button  class="oe_stat_button"  -->
+	<!--                         	string="Programar nuevo servicio"  -->
+	<!--                         	name="open_new_service"  -->
+	<!--                         	type="action" icon="fa-tasks" attrs="{'invisible':['|',('id','=',False),('state','!=','finished_but'])}" -->
+	<!--                         /> -->
+									<button name="%(cam_new_service_action_window)d" 
+										type="action"
+										icon="fa-plus"
+										attrs="{'invisible':['|',('id','=',False),('state','!=','finished_but')]}" 
+										class="oe_stat_button oe_read_only"
+										context="{'default_related_service_id':id,'vehicle_id':vehicle_id}">
+										
+		                                <div class="o_field_widget o_stat_info">
+		                                    <span class="o_stat_text">Programar nuevo servicio</span>
+		                                </div>
+										
+									</button> 
+                    </div>			
+						<field name="name" nolabel="1"/>
+					</h1>
+					<group>
+						<group string="Servicio">
+								<field name="datetime_programmed"/>
+						        <field name="start_time"/>
+						        <field name="end_time"/>
+														
+								<field name="workshop_id"/>
+								<field name="service_type"/>
+								<field name="service_sub_type" attrs="{'invisible':[('service_type','!=','corrective')]}"/>
+								<field name="diagnostics"/>
+								<field name="observation"/>
+								<field name="related_service_id"/>
+								<field name="related_service_observation" attrs="{'invisible':[('related_service_id','=',False)]}"/>
+						</group>
+	
+						<group string="Vehiculo">
+								<field name="vehicle_id"/>
+									<field name="vehicle_nro_serie" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_model_id" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_patent" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_sector_id" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_function_id" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_engine_id" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+									<field name="vehicle_related_tool_id" attrs="{'invisible':[('vehicle_id','=',False)]}"/>
+						</group>					
+					</group>
+					<notebook attrs="{'invisible':[('id','=',False)]}">
+					
+						<page string="Tareas Planificadas">
+							<field name="task_planned_ids" context="{'default_service_id':id,'default_type':'planned','form_view_ref':'service.cam_item_task_reduced_form','tree_view_ref':'service.cam_item_task_tree'}">
+								
+							</field>
+						</page>
+						<page string="Tareas Diagnosticadas">
+							<field name="task_diagnostics_ids" context="{'default_service_id':id,'default_type':'extra','form_view_ref':'service.cam_item_task_reduced_form','tree_view_ref':'service.cam_item_task_tree'}">
+							</field>
+						</page>
+						<page string="Trabajo de terceros">
+							<field name="third_party_work_ids" context="{'default_service_id':id}">
+								<tree editable="top">
+									<field name="id" invisible="1"/>
+									<field name="res_partner_id"/>
+									<field name="task"/>
+									<field name="state"/>
+									<field name="start_time"/>
+									<field name="end_time"/>
+									<field name="result"/>
+									<field name="result_description"/>
+
+									<button name="stop" string="Finalizar" type="object" class="oe_highlight oe_read_only"
+										 attrs="{'invisible':[('state','!=','in_progress')]}"/>
+									<button name="start" string="Comenzar" type="object" class="oe_highlight oe_read_only"
+										 attrs="{'invisible':['|',('state','=','in_progress'),('result','!=',False)]}"/>
+								</tree>
+							</field>
+						</page>
+					
+					</notebook>					
+      		</sheet>
+      	</form>
       </field>
+      
+     </record>
+      
+      
+         
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cam_service_action_window">
+      <field name="name">Servicios</field>
+      <field name="res_model">cam.service</field>
+      <field name="view_mode">tree,form,kanban,calendar</field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="vehicle" id="vehicle.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="vehicle.menu_1" parent="vehicle.menu_root"/>
-    <menuitem name="Menu 2" id="vehicle.menu_2" parent="vehicle.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="vehicle.menu_1_list" parent="vehicle.menu_1"
-              action="vehicle.action_window"/>
-    <menuitem name="Server to list" id="vehicle" parent="vehicle.menu_2"
-              action="vehicle.action_server"/>
--->
   </data>
 </odoo>

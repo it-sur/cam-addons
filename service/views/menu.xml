@@ -3,15 +3,19 @@
 
     <!-- Top menu item -->
 
-	<menuitem name="Servicio" id="cam_service_menu_root" groups="group_name_menu_cam" action="cam_service_action_window"
-		            web_icon="cam_base,static/description/icon.png"/>
+	<menuitem name="Servicio" id="cam_service_menu_root" groups="cam_base.group_name_menu_cam" action="cam_service_action_window"
+		            web_icon="service,static/src/img/icon.jpg"/>
 
     <!-- Menus -->
     
-	<menuitem id="cam_serice_menu" name="Servicio" parent="cam_service_menu_root" action="cam_service_action_window"/>    	
-	<menuitem id="cam_task_menu" name="Tareas predefinidas" parent="cam_service_menu_root" action="cam_task_action_window"/>    	
-	<menuitem id="workshop" name="Taller" parent="cam_service_menu_root" action="cam_workshop_action_window"/>    	
-	<menuitem id="mechanic" name="Mecanico" parent="cam_service_menu_root" action="cam_mechanic_action_window"/>    	
+	<menuitem id="cam_service_menu" name="Servicio" parent="cam_service_menu_root" action="cam_service_action_window"/>    	
+
+
+
+	<menuitem id="workshop_menu" name="Taller" parent="cam_service_menu_root" action="cam_workshop_action_window"/>    	
+	<menuitem id="mechanic_menu" name="Mecanico" parent="cam_service_menu_root" action="cam_mechanic_action_window"/>    	
+	<menuitem id="cam_predefined_service_menu" name="Servicios predefinidos" parent="cam_service_menu_root" action="cam_predefined_service_action_window"/>    	
+	<menuitem id="cam_task_menu" name="Tareas" parent="cam_service_menu_root" action="cam_task_action_window"/>    	
 		
 		
   </data>

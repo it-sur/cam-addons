@@ -9,13 +9,34 @@ class vehicle(models.Model):
     _description = 'cam.vehicle'
     _inherit = ["cam.maintainable_object"]
 
-    nro_interno = fields.Char("Nro interno")
+
+    def display_name(self):
+        for rec in self:
+            serie = rec.nro_serie if rec.nro_serie else "" 
+            marca = ""
+            if rec.brand_id:
+                marca = " - "+ rec.brand_id.display_name  if rec.brand_id.display_name else ""
+            funcion = ""
+            if rec.function_id:
+                funcion = " - " + rec.function_id.display_name if rec.function_id.display_name else ""
+            estado = ""
+            if rec.state:
+            
+                estado = "(" + [item for item in rec._get_states() if item[0] == rec.state][0][1] + ")"
+            
+            rec.display_name = serie + marca + funcion + estado
+
+
+    display_name = fields.Char(compute=display_name)
+
+    nro_serie = fields.Char("Nro interno")
 
     patent = fields.Char(string="Patente", track_visibility='onchange')
 
     sector_id = fields.Many2one('cam.sector',string="Sector")
     
     function_id = fields.Many2one('cam.function',string="Funcion")
+
 
 
 
@@ -31,6 +52,7 @@ class vehicle(models.Model):
 
 
     engine_id = fields.Many2one("cam.engine",string="Motor")
+    transmission = fields.Char("Transmision")
 
 
     model_id = fields.Many2one("cam.vehicle_model", string="Modelo", track_visibility='onchange')
@@ -40,7 +62,7 @@ class vehicle(models.Model):
     out_of_service_reason_ids = fields.One2many(comodel_name='cam.out_of_service_reason_vehicle',inverse_name="vehicle_id",
                                                  string='Razones de fuera de servicio')
 
-    
+
     
     fabricante_origen_anio = fields.Char(string="Fabricante/Origen/Año", readonly=True, 
                                          compute="_compute_vin", help='Datos segun nro de chasis')
@@ -226,7 +248,6 @@ class vehicle(models.Model):
         
     _sql_constraints = [
             ('vehicle_chasis_unique', 'unique(nro_chasis)', 'El chasis ya existe'),
-            ('vehicle_nro_interno', 'unique(nro_interno)', 'El nro de interno ya existe'),
             ('vehicle_patent', 'unique(patent)', 'La patente ya existe'),
     ]
 

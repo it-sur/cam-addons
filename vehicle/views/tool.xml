@@ -8,10 +8,8 @@
         <tree>
           <field name="nro_serie"/>
           <field name="model_id"/>
-          <field name="engine_id"/>
           <field name="state"/>
           <field name="brand_id"/>
-          <field name="model_id"/>
         </tree>
       </field>
     </record>
@@ -43,12 +41,17 @@
 						
 						</field>
 					<group>
-						<group>
+						<group string="Ficha">
 							<field name="model_id"/>
 							<field name="brand_id"/>
-							<field name="engine_id"/>
 						</group>
+						<group>
+							<field name="image_1920" widget="image" nolabel="1" class="oe_right " options="{'preview_image': 'image_256'}"/>
+						</group>						
 					</group>
+						<group string="Vehiculo">
+							<field name="owner_vehicle_id"/>
+						</group>
 				</sheet>			
 			</form>
 		</field>
@@ -59,7 +62,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="cam_tool_action_window">
-      <field name="name">tool window</field>
+      <field name="name">Herramientas</field>
       <field name="res_model">cam.tool</field>
       <field name="view_mode">tree,form</field>
     </record>

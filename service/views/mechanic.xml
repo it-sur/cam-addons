@@ -16,13 +16,11 @@
 -->
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="vehicle.action_window">
-      <field name="name">vehicle window</field>
-      <field name="res_model">vehicle.vehicle</field>
+    <record model="ir.actions.act_window" id="cam_mechanic_action_window">
+      <field name="name">Mecanicos</field>
+      <field name="res_model">hr.employee</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
     <!-- server action to the one above -->
 <!--

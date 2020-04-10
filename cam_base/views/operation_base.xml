@@ -5,8 +5,9 @@
 			<field name="name">operation_base list</field>
 			<field name="model">cam.operation_base</field>
 			<field name="arch" type="xml">
-				<tree>
+				<tree editable="bottom">
 					<field name="name" />
+					<field name="code" />
 				</tree>
 			</field>
 		</record>
@@ -16,10 +17,11 @@
 			<field name="name">cam.operation_base.form</field>
 			<field name="model">cam.operation_base</field>
 			<field name="arch" type="xml">
-				<form string="Estado Financiero">
+				<form string="Base de operaciones">
 					<group>
 						<h1>
 							<field name="name" />
+							<field name="code" />
 						</h1>
 					</group>
 				</form>
@@ -28,7 +30,7 @@
 
 		<!-- actions opening views on models -->
 		<record model="ir.actions.act_window" id="cam_operation_base_action_window">
-			<field name="name">operation_base window</field>
+			<field name="name">Bases de operacines</field>
 			<field name="res_model">cam.operation_base</field>
 			<field name="view_mode">tree,form</field>
 		</record>

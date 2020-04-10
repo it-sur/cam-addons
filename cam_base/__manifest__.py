@@ -30,6 +30,7 @@
         'security/menu_security.xml',
         'security/ir.model.access.csv',
         'views/operation_base.xml',
+        'views/brand.xml',
         'views/sector.xml',
         'views/function.xml',
         'views/menu.xml',
